@@ -25,9 +25,8 @@ const messageEl = document.querySelector("#message");
 // checks
 console.log(squareEls);
 console.log(messageEl);
-console.log(document.querySelector("#test"));
-console.log(document.querySelector("#1"));
-// console.log(board[0].innerText);
+console.log(document.getElementById("1"));
+// console.log(board.innerText);
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
