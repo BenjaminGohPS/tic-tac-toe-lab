@@ -23,12 +23,11 @@ const squareEls = document.querySelectorAll(".sqr");
 const messageEl = document.querySelector("#message");
 
 // checks
-console.log(squareEls);
-console.log(messageEl);
-console.log(document.getElementById(1));
-console.log(squareEls[1]);
-console.log(document.querySelector(".board"));
-console.log;
+// console.log(squareEls);
+// console.log(messageEl);
+// console.log(document.getElementById(1));
+// console.log(squareEls[1]);
+// console.log(document.querySelector(".board"));
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -38,7 +37,6 @@ const init = () => {
   winner = "false";
   tie = "false";
   render();
-  console.log(init); // checks
 };
 
 const render = () => {
@@ -69,6 +67,11 @@ const updateBoard = () => {
   }
 };
 
+const placePiece = (index) => {
+  board[index] = turn;
+  console.log(board);
+};
+
 const updateMessage = () => {
   if (winner === "false" && tie === "false") {
     messageEl.innerText = "Player turn";
@@ -84,12 +87,25 @@ const handleClick = (event) => {
 
   // to check what did I click
   console.log(squareIndex);
+  console.log(board[squareIndex]);
+
+  if (board[squareIndex] !== "") {
+    console.log("Occupied"); // checks
+    return;
+  }
+  if (winner === "true") {
+    return;
+  }
+
+  placePiece(squareIndex);
 };
 
 document.querySelector(".board").addEventListener("click", handleClick);
 
 init();
 console.log(`This is in board: ${board}`);
+// board[7] = turn;
+// console.log(`This is in board after: ${board}`);
 
 /*----------------------------- Event Listeners -----------------------------*/
 // const squareEls = document
