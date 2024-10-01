@@ -12,10 +12,21 @@ const squareEls = document.querySelector(".board");
 
 const messageEl = document.querySelector("#message");
 
+// checks
 console.log(squareEls);
 console.log(messageEl);
 /*-------------------------------- Functions --------------------------------*/
 
+const init = () => {
+  board = ["", "", "", "", "", "", "", "", ""];
+  turn = "X"; // X - represent player
+  winner = "false";
+  tie = "false";
+  render();
+  console.log(init);
+};
+
+init();
 /*----------------------------- Event Listeners -----------------------------*/
 // const squareEls = document
 //   .querySelector(".sqr")
