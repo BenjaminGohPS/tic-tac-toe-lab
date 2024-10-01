@@ -1,4 +1,14 @@
 /*-------------------------------- Constants --------------------------------*/
+const winningCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2],
+];
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -15,6 +25,7 @@ const messageEl = document.querySelector("#message");
 // checks
 console.log(squareEls);
 console.log(messageEl);
+console.log(board.id);
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
@@ -32,9 +43,16 @@ const render = () => {
 };
 
 const updateBoard = () => {
-  for (const b of board) {
-    squareEls[b];
-    console.log(squareEls[b]);
+  //   //   for (const b of board) {
+  //   // squareEls[b];
+  //   // console.log(squareEls[b]);
+  //   for (const b of board) {
+  //     board.forEach((element) => (squareEls.innerText = "X"));
+  //   }
+  //   //   board.forEach((element) => (squareEls.innerText = "X"));
+
+  for (let i = 0; i < board.length; i++) {
+    squareEls.id[i].innerText = "X";
   }
 };
 
@@ -49,6 +67,8 @@ const updateMessage = () => {
 };
 
 init();
+console.log(`This is in board: ${board}`);
+
 /*----------------------------- Event Listeners -----------------------------*/
 // const squareEls = document
 //   .querySelector(".sqr")
