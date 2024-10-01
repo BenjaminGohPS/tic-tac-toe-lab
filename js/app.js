@@ -18,16 +18,18 @@ let winner = "";
 let tie = "";
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelector(".board");
+const squareEls = document.querySelectorAll(".sqr");
 
 const messageEl = document.querySelector("#message");
 
 // checks
 console.log(squareEls);
 console.log(messageEl);
-console.log(document.getElementById("1"));
+console.log(document.getElementById(1));
+console.log(squareEls[1]);
+console.log(document.querySelector(".board"));
+console.log;
 
-// console.log(board.innerText);
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
@@ -44,29 +46,24 @@ const render = () => {
   updateMessage();
 };
 
-/* USER STORY
-loop over board
-for each element
-- use current index of the iteration to access the corresponding square
-in the squareEls
-
-earlier we know board[0]
-*/
+// using the id method
+// const updateBoard = () => {
+//   for (let i = 0; i < board.length; i++) {
+//     if (board[i] === "X") {
+//       document.getElementById(`${i}`).innerText = "X";
+//     } else if (board[i] === "O") {
+//       document.getElementById(`${i}`).innerText = "O";
+//     } else {
+//     }
+//   }
+// };
 
 const updateBoard = () => {
-  //   //   for (const b of board) {
-  //   // squareEls[b];
-  //   // console.log(squareEls[b]);
-  //   for (const b of board) {
-  //     board.forEach((element) => (squareEls.innerText = "X"));
-  //   }
-  //   //   board.forEach((element) => (squareEls.innerText = "X"));
-
   for (let i = 0; i < board.length; i++) {
     if (board[i] === "X") {
-      document.getElementById(`${i}`).innerText = "X";
+      squareEls[i].innerText = "X";
     } else if (board[i] === "O") {
-      document.getElementById(`${i}`).innerText = "O";
+      squareEls[i].innerText = "O";
     } else {
     }
   }
@@ -82,9 +79,17 @@ const updateMessage = () => {
   }
 };
 
+const handleClick = (event) => {
+  const squareIndex = event.target.id;
+
+  // to check what did I click
+  console.log(squareIndex);
+};
+
+document.querySelector(".board").addEventListener("click", handleClick);
+
 init();
 console.log(`This is in board: ${board}`);
-console.log(board.length);
 
 /*----------------------------- Event Listeners -----------------------------*/
 // const squareEls = document
