@@ -32,7 +32,7 @@ const messageEl = document.querySelector("#message");
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-  board = ["", "X", "X", "", "", "", "O", "", "X"];
+  board = ["O", "X", "X", "", "O", "O", "O", "X", "X"];
   turn = "X"; // X - represent player
   winner = "false";
   tie = "false";
@@ -84,7 +84,6 @@ const placePiece = (index) => {
 
 const checkForWinner = () => {
   for (const winningCombo of winningCombos) {
-  
     if (
       board[winningCombo[0]] !== "" &&
       board[winningCombo[0]] === board[winningCombo[1]] &&
@@ -92,6 +91,16 @@ const checkForWinner = () => {
     ) {
       winner = "true";
     }
+  }
+};
+
+const checkForTie = () => {
+  if (winner === "true") {
+    return;
+  } else if (board.includes("")) {
+    tie = "false";
+  } else {
+    tie = "true";
   }
 };
 
@@ -112,14 +121,14 @@ const handleClick = (event) => {
 
   placePiece(squareIndex);
   checkForWinner();
+  checkForTie();
 };
 
 document.querySelector(".board").addEventListener("click", handleClick);
 
 init();
 console.log(`This is in board: ${board}`);
-checkForWinner();
-console.log(winner);
+
 // board[7] = turn;
 // console.log(`This is in board after: ${board}`);
 
