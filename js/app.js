@@ -32,7 +32,7 @@ const messageEl = document.querySelector("#message");
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-  board = ["O", "X", "", "", "", "O", "", "", "X"];
+  board = ["", "X", "X", "", "", "", "O", "", "X"];
   turn = "X"; // X - represent player
   winner = "false";
   tie = "false";
@@ -67,11 +67,6 @@ const updateBoard = () => {
   }
 };
 
-const placePiece = (index) => {
-  board[index] = turn;
-  console.log(board);
-};
-
 const updateMessage = () => {
   if (winner === "false" && tie === "false") {
     messageEl.innerText = "Player turn";
@@ -79,6 +74,24 @@ const updateMessage = () => {
     messageEl.innerText = "We have a tie";
   } else {
     messageEl.innerText = "Player have won";
+  }
+};
+
+const placePiece = (index) => {
+  board[index] = turn;
+  console.log(board);
+};
+
+const checkForWinner = () => {
+  for (const winningCombo of winningCombos) {
+  
+    if (
+      board[winningCombo[0]] !== "" &&
+      board[winningCombo[0]] === board[winningCombo[1]] &&
+      board[winningCombo[0]] === board[winningCombo[2]]
+    ) {
+      winner = "true";
+    }
   }
 };
 
@@ -98,12 +111,15 @@ const handleClick = (event) => {
   }
 
   placePiece(squareIndex);
+  checkForWinner();
 };
 
 document.querySelector(".board").addEventListener("click", handleClick);
 
 init();
 console.log(`This is in board: ${board}`);
+checkForWinner();
+console.log(winner);
 // board[7] = turn;
 // console.log(`This is in board after: ${board}`);
 
