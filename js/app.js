@@ -22,12 +22,16 @@ const squareEls = document.querySelectorAll(".sqr");
 
 const messageEl = document.querySelector("#message");
 
+const resetBtnEl = document.querySelector("#reset");
+
 // checks
 // console.log(squareEls);
 // console.log(messageEl);
 // console.log(document.getElementById(1));
-// console.log(squareEls[1]);
-// console.log(document.querySelector(".board"));
+// squareEls[1].innerText = 'X';
+console.log(squareEls[1]);
+console.log(document.querySelector(".board"));
+console.log(document.querySelector("#reset"));
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -37,6 +41,7 @@ const init = () => {
   winner = "false";
   tie = "false";
   render();
+  console.log(board);
 };
 
 const render = () => {
@@ -63,13 +68,14 @@ const updateBoard = () => {
     } else if (board[i] === "O") {
       squareEls[i].innerText = "O";
     } else {
+      squareEls[i].innerText = "";
     }
   }
 };
 
 const updateMessage = () => {
   if (winner === "false" && tie === "false") {
-    messageEl.innerText = "Player turn";
+    // messageEl.innerText = "Player turn";
   } else if (winner === "false" && tie === "true") {
     messageEl.innerText = "We have a tie";
   } else {
@@ -79,6 +85,7 @@ const updateMessage = () => {
 
 const placePiece = (index) => {
   board[index] = turn;
+
   console.log(board); // checks
 };
 
@@ -111,8 +118,10 @@ const switchPlayerTurn = () => {
   } else {
     if (turn === "X") {
       turn = "O";
+      messageEl.innerText = "Player O turn";
     } else {
       turn = "X";
+      messageEl.innerText = "Player X turn";
     }
   }
 };
@@ -125,6 +134,7 @@ const handleClick = (event) => {
 
   if (board[squareIndex] !== "") {
     console.log("Occupied"); // checks
+    // messageEl.innerText = 'Occupied'; // to add in more info
     return;
   }
   if (winner === "true") {
@@ -135,6 +145,7 @@ const handleClick = (event) => {
   checkForWinner();
   checkForTie();
   switchPlayerTurn();
+  render();
 };
 
 init();
@@ -145,3 +156,4 @@ console.log(`This is in board: ${board}`);
 
 /*----------------------------- Event Listeners -----------------------------*/
 document.querySelector(".board").addEventListener("click", handleClick);
+resetBtnEl.addEventListener("click", init);
