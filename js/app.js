@@ -32,7 +32,7 @@ const messageEl = document.querySelector("#message");
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-  board = ["O", "X", "X", "", "O", "O", "O", "X", "X"];
+  board = ["", "", "", "", "", "", "", "", ""];
   turn = "X"; // X - represent player
   winner = "false";
   tie = "false";
@@ -79,7 +79,7 @@ const updateMessage = () => {
 
 const placePiece = (index) => {
   board[index] = turn;
-  console.log(board);
+  console.log(board); // checks
 };
 
 const checkForWinner = () => {
@@ -104,12 +104,24 @@ const checkForTie = () => {
   }
 };
 
+const switchPlayerTurn = () => {
+  if (winner === "true") {
+    console.log(winner);
+    return;
+  } else {
+    if (turn === "X") {
+      turn = "O";
+    } else {
+      turn = "X";
+    }
+  }
+};
+
 const handleClick = (event) => {
   const squareIndex = event.target.id;
 
   // to check what did I click
   console.log(squareIndex);
-  console.log(board[squareIndex]);
 
   if (board[squareIndex] !== "") {
     console.log("Occupied"); // checks
@@ -122,9 +134,8 @@ const handleClick = (event) => {
   placePiece(squareIndex);
   checkForWinner();
   checkForTie();
+  switchPlayerTurn();
 };
-
-document.querySelector(".board").addEventListener("click", handleClick);
 
 init();
 console.log(`This is in board: ${board}`);
@@ -133,9 +144,4 @@ console.log(`This is in board: ${board}`);
 // console.log(`This is in board after: ${board}`);
 
 /*----------------------------- Event Listeners -----------------------------*/
-// const squareEls = document
-//   .querySelector(".sqr")
-//   .addEventListener("click", (event) => {
-//     // board = event.target.id;
-//     console.log(event.target.id);
-//   });
+document.querySelector(".board").addEventListener("click", handleClick);
