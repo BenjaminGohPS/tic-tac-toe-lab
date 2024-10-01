@@ -29,9 +29,9 @@ const resetBtnEl = document.querySelector("#reset");
 // console.log(messageEl);
 // console.log(document.getElementById(1));
 // squareEls[1].innerText = 'X';
-console.log(squareEls[1]);
-console.log(document.querySelector(".board"));
-console.log(document.querySelector("#reset"));
+// console.log(squareEls[1]);
+// console.log(document.querySelector(".board"));
+// console.log(document.querySelector("#reset"));
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -41,7 +41,6 @@ const init = () => {
   winner = "false";
   tie = "false";
   render();
-  console.log(board);
 };
 
 const render = () => {
@@ -75,11 +74,11 @@ const updateBoard = () => {
 
 const updateMessage = () => {
   if (winner === "false" && tie === "false") {
-    // messageEl.innerText = "Player turn";
+    messageEl.innerText = `Player ${turn} turn`;
   } else if (winner === "false" && tie === "true") {
     messageEl.innerText = "We have a tie";
   } else {
-    messageEl.innerText = "Player have won";
+    messageEl.innerText = `Player ${turn} have won`;
   }
 };
 
@@ -113,7 +112,6 @@ const checkForTie = () => {
 
 const switchPlayerTurn = () => {
   if (winner === "true") {
-    console.log(winner);
     return;
   } else {
     if (turn === "X") {
@@ -150,9 +148,6 @@ const handleClick = (event) => {
 
 init();
 console.log(`This is in board: ${board}`);
-
-// board[7] = turn;
-// console.log(`This is in board after: ${board}`);
 
 /*----------------------------- Event Listeners -----------------------------*/
 document.querySelector(".board").addEventListener("click", handleClick);
