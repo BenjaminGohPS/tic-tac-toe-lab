@@ -12,7 +12,7 @@ const winningCombos = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let board = "";
+let board = [];
 let turn = "";
 let winner = "";
 let tie = "";
@@ -25,7 +25,9 @@ const messageEl = document.querySelector("#message");
 // checks
 console.log(squareEls);
 console.log(messageEl);
-console.log(board.id);
+console.log(document.querySelector("#test"));
+console.log(document.querySelector("#1"));
+// console.log(board[0].innerText);
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
@@ -37,24 +39,36 @@ const init = () => {
   console.log(init); // checks
 };
 
-const render = () => {
-  updateBoard();
-  updateMessage();
-};
+// const render = () => {
+//   updateBoard();
+//   updateMessage();
+// };
 
-const updateBoard = () => {
-  //   //   for (const b of board) {
-  //   // squareEls[b];
-  //   // console.log(squareEls[b]);
-  //   for (const b of board) {
-  //     board.forEach((element) => (squareEls.innerText = "X"));
-  //   }
-  //   //   board.forEach((element) => (squareEls.innerText = "X"));
+/* USER STORY
+loop over board
+for each element
+- use current index of the iteration to access the corresponding square
+in the squareEls
 
-  for (let i = 0; i < board.length; i++) {
-    squareEls.id[i].innerText = "X";
-  }
-};
+earlier we know board[0]
+*/
+
+// const updateBoard = () => {
+//   //   //   for (const b of board) {
+//   //   // squareEls[b];
+//   //   // console.log(squareEls[b]);
+//   //   for (const b of board) {
+//   //     board.forEach((element) => (squareEls.innerText = "X"));
+//   //   }
+//   //   //   board.forEach((element) => (squareEls.innerText = "X"));
+
+// //   for (let i=0; i < board.length; i++) {}
+// console.log()
+// board.forEach((b) => {
+//     squareEls.(b)
+// })
+
+// };
 
 const updateMessage = () => {
   if (winner === "false" && tie === "false") {
