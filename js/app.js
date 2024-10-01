@@ -84,8 +84,6 @@ const updateMessage = () => {
 
 const placePiece = (index) => {
   board[index] = turn;
-
-  console.log(board); // checks
 };
 
 const checkForWinner = () => {
@@ -127,12 +125,7 @@ const switchPlayerTurn = () => {
 const handleClick = (event) => {
   const squareIndex = event.target.id;
 
-  // to check what did I click
-  console.log(squareIndex);
-
   if (board[squareIndex] !== "") {
-    console.log("Occupied"); // checks
-    // messageEl.innerText = 'Occupied'; // to add in more info
     return;
   }
   if (winner === "true") {
@@ -147,7 +140,6 @@ const handleClick = (event) => {
 };
 
 init();
-console.log(`This is in board: ${board}`);
 
 /*----------------------------- Event Listeners -----------------------------*/
 document.querySelector(".board").addEventListener("click", handleClick);
